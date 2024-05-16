@@ -26,6 +26,7 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+
         x = Input.GetAxis("Horizontal");
         y = Input.GetAxis("Vertical");
 

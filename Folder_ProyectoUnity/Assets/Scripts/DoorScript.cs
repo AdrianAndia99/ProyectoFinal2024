@@ -6,7 +6,6 @@ public class DoorScript : MonoBehaviour
 {
     public Animator doorAnimator;
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == ("Player"))

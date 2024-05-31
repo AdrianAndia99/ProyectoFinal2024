@@ -8,17 +8,15 @@ public class PlayerScript : MonoBehaviour
     PlayerInput playerInput;
     InputAction moveAction;
 
+    private Vector2 movimientoXD;
+
     public float moveSpeed;
-    void Start()
+
+    public void OnMove(InputAction.CallbackContext context)
     {
-        playerInput = GetComponent<PlayerInput>();
-        moveAction = playerInput.actions.FindAction("Movimiento");
+        movimientoXD = context.ReadValue<Vector2>();
     }
 
-    void Move()
-    {
-        Vector2 direction = moveAction.ReadValue<Vector2>();
-    }
     /* //private Vector2 movimiento;
      private Animator animator;
      private Rigidbody rb;
@@ -33,10 +31,10 @@ public class PlayerScript : MonoBehaviour
          animator = GetComponent<Animator>();
      }
 
-    /* public void OnMove(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
      {
          movimiento = context.ReadValue<Vector2>();
-     }*/
+     }
 
     /* void Update()
      {

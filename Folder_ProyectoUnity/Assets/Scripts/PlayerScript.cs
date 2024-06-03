@@ -5,19 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerScript : MonoBehaviour
 {
-    PlayerInput playerInput;
-    InputAction moveAction;
-
-    private Vector2 movimientoXD;
-
-    public float moveSpeed;
-
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        movimientoXD = context.ReadValue<Vector2>();
-    }
-
-    /* //private Vector2 movimiento;
+     private Vector2 movimiento;
      private Animator animator;
      private Rigidbody rb;
 
@@ -25,27 +13,19 @@ public class PlayerScript : MonoBehaviour
      public float velocidadRotacion = 200.0f;
      public float x, y;
 
-     void Start()
-     {
+    void Start()
+    {
          rb = GetComponent<Rigidbody>();
          animator = GetComponent<Animator>();
-     }
+    }
 
-    public void OnMove(InputAction.CallbackContext context)
-     {
-         movimiento = context.ReadValue<Vector2>();
-     }
-
-    /* void Update()
-     {
+    void Update()
+    {
 
          x = Input.GetAxis("Horizontal");
          y = Input.GetAxis("Vertical");
 
          transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
-         transform.Translate(0,0,y * Time.deltaTime * velocidadMovimiento);
-
-         animator.SetFloat("VelX",x);
-         animator.SetFloat("VelY", y);
-     }*/
+         transform.Translate(0,0,y * Time.deltaTime * velocidadMovimiento);      
+    }
 }

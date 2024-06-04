@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 using DG.Tweening; 
 
@@ -40,8 +41,8 @@ public class PlayerScript : MonoBehaviour
             DamagePlayer(10);
             if (curHealth == 0)
             {
-                ScalePlayer();
-               //SceneManager.LoadScene("GameOver");
+                StartCoroutine(ScalePlayerAndLoadGameOver());
+
             }
         }
     }
@@ -70,9 +71,12 @@ public class PlayerScript : MonoBehaviour
         curHealth -= damage;
         healthBar.SetHealth(curHealth);
     }
-
-    private void ScalePlayer()
+    private IEnumerator ScalePlayerAndLoadGameOver()
     {
         transform.DOScale(Vector3.zero, duration).SetEase(EaseValue);
+
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene("GameOver");
     }
 }

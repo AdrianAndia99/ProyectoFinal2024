@@ -1,20 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+using DG.Tweening; 
+
 public class PlayerScript : MonoBehaviour
 {
+    [Header("Input")]
     Vector2 movimiento;
-    private Rigidbody rb;
 
+    [Header("Rotacion y velocidad")]
+    private Rigidbody rb;
     public float velocidadMovimiento = 3.0f;
     private float velocidadRotacion;
 
+    [Header("Vida")]
     public int curHealth = 0;
     public int maxHealth = 50;
     public VidaScript healthBar;
+
+    [Header("DoTween")]
+    [SerializeField] private float duration;
+    [SerializeField] private Ease EaseValue = Ease.Linear;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -32,8 +40,8 @@ public class PlayerScript : MonoBehaviour
             DamagePlayer(10);
             if (curHealth == 0)
             {
-                Destroy(this.gameObject);
-                SceneManager.LoadScene("GameOver");
+                ScalePlayer();
+               //SceneManager.LoadScene("GameOver");
             }
         }
     }
@@ -52,7 +60,6 @@ public class PlayerScript : MonoBehaviour
             rb.MovePosition(transform.position + moveDirection * velocidadMovimiento * Time.deltaTime);
         }
     }
-
     public void OnMove(InputAction.CallbackContext context)
     {
         movimiento = context.ReadValue<Vector2>();
@@ -62,5 +69,10 @@ public class PlayerScript : MonoBehaviour
     {
         curHealth -= damage;
         healthBar.SetHealth(curHealth);
+    }
+
+    private void ScalePlayer()
+    {
+        transform.DOScale(Vector3.zero, duration).SetEase(EaseValue);
     }
 }

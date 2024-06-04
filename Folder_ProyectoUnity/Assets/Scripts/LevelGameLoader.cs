@@ -31,5 +31,4 @@ public class LevelGameLoader : MonoBehaviour
             yield return null;
         }
     }
-
 }

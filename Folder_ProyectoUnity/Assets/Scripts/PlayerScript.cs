@@ -2,30 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
-     private Vector2 movimiento;
-     private Animator animator;
-     private Rigidbody rb;
+    Vector2 movimiento;
+    private Rigidbody rb;
 
-     public float velocidadMovimiento = 3.0f;
-     public float velocidadRotacion = 200.0f;
-     public float x, y;
+    public float velocidadMovimiento = 3.0f;
+    private float velocidadRotacion;
+
+    public int curHealth = 0;
+    public int maxHealth = 50;
+    public VidaScript healthBar;
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Start()
     {
-         rb = GetComponent<Rigidbody>();
-         animator = GetComponent<Animator>();
+        curHealth = maxHealth;
     }
 
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Dog")
+        {
+            DamagePlayer(10);
+            if (curHealth == 0)
+            {
+                Destroy(this.gameObject);
+                SceneManager.LoadScene("GameOver");
+            }
+        }
+    }
 
-         x = Input.GetAxis("Horizontal");
-         y = Input.GetAxis("Vertical");
+    void FixedUpdate()
+    {
+        Vector3 direction = new Vector3(movimiento.x, 0, movimiento.y).normalized;
 
-         transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
-         transform.Translate(0,0,y * Time.deltaTime * velocidadMovimiento);      
+        if (direction.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref velocidadRotacion, 0.1f);
+            transform.rotation = Quaternion.Euler(0, angle, 0);
+
+            Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+            rb.MovePosition(transform.position + moveDirection * velocidadMovimiento * Time.deltaTime);
+        }
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        movimiento = context.ReadValue<Vector2>();
+    }
+
+    public void DamagePlayer(int damage)
+    {
+        curHealth -= damage;
+        healthBar.SetHealth(curHealth);
     }
 }

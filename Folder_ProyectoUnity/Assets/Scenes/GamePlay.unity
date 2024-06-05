@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -412,6 +412,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &264818841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264818837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f9b7088d9bc1b4ab474bf82dba2d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14293274, y: 0.8453323, z: -0.27951685, w: 0.43226606}
+  m_LocalRotation: {x: 0.14293274, y: 0.84533226, z: -0.27951688, w: 0.4322661}
   m_LocalPosition: {x: -0.77, y: 7.76, z: 7.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -995,6 +1007,7 @@ MonoBehaviour:
   healthBar: {fileID: 1291125854}
   duration: 1.5
   EaseValue: 29
+  gameManage: {fileID: 789315779}
 --- !u!114 &541055814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,6 +1298,50 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &789315778
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 789315780}
+  - component: {fileID: 789315779}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &789315779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789315778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b124e9c1e31e044a863e3a49e83c4f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &789315780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789315778}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.166415, y: 2.7314308, z: 0.3392026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1461,6 +1518,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 264818839}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f844c4254533cc941908e14217968b79,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 264818841}
   m_SourcePrefab: {fileID: 100100000, guid: f844c4254533cc941908e14217968b79, type: 3}
 --- !u!1 &963408833
 GameObject:
@@ -1882,7 +1943,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406742812}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14293274, y: 0.8453323, z: -0.27951685, w: 0.43226606}
+  m_LocalRotation: {x: 0.14293274, y: 0.84533226, z: -0.27951688, w: 0.4322661}
   m_LocalPosition: {x: -0.77, y: 7.76, z: 7.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2075,7 +2136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1543881898
 Transform:
   m_ObjectHideFlags: 0
@@ -4320,3 +4381,4 @@ SceneRoots:
   - {fileID: 2140837240}
   - {fileID: 1865584156}
   - {fileID: 1291125852}
+  - {fileID: 789315780}

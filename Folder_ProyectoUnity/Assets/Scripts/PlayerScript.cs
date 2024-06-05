@@ -3,10 +3,11 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-using DG.Tweening; 
+using DG.Tweening;
 
 public class PlayerScript : MonoBehaviour
 {
+
     [Header("Input")]
     Vector2 movimiento;
 
@@ -23,6 +24,8 @@ public class PlayerScript : MonoBehaviour
     [Header("DoTween")]
     [SerializeField] private float duration;
     [SerializeField] private Ease EaseValue = Ease.Linear;
+
+    [SerializeField] private GameManage gameManage;
 
     void Awake()
     {
@@ -42,7 +45,6 @@ public class PlayerScript : MonoBehaviour
             if (curHealth == 0)
             {
                 StartCoroutine(ScalePlayerAndLoadGameOver());
-
             }
         }
     }
@@ -77,6 +79,6 @@ public class PlayerScript : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        SceneManager.LoadScene("GameOver");
+        gameManage.Perder();
     }
 }

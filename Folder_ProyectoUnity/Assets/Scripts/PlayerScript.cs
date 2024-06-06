@@ -2,19 +2,21 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
-
 using DG.Tweening;
 
 public class PlayerScript : MonoBehaviour
 {
+    [Header("Animator")]
+    [SerializeField] Animator animatorPlayer;
 
     [Header("Input")]
-    Vector2 movimiento;
+    [SerializeField] Vector2 movimiento;
+
 
     [Header("Rotacion y velocidad")]
+    [SerializeField] float velocidadMovimiento = 3.0f;
+    [SerializeField] float velocidadRotacion;
     private Rigidbody rb;
-    public float velocidadMovimiento = 3.0f;
-    private float velocidadRotacion;
 
     [Header("Vida")]
     public int curHealth = 0;
@@ -30,6 +32,7 @@ public class PlayerScript : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        animatorPlayer = GetComponent<Animator>();
     }
 
     void Start()
@@ -44,6 +47,7 @@ public class PlayerScript : MonoBehaviour
             DamagePlayer(10);
             if (curHealth == 0)
             {
+                Time.timeScale = 0;
                 StartCoroutine(ScalePlayerAndLoadGameOver());
             }
         }
@@ -52,6 +56,8 @@ public class PlayerScript : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = new Vector3(movimiento.x, 0, movimiento.y).normalized;
+
+        animatorPlayer.SetBool("IsRunning", direction.magnitude >= 0.1f);
 
         if (direction.magnitude >= 0.1f)
         {
@@ -75,10 +81,11 @@ public class PlayerScript : MonoBehaviour
     }
     private IEnumerator ScalePlayerAndLoadGameOver()
     {
-        transform.DOScale(Vector3.zero, duration).SetEase(EaseValue);
+        transform.DOScale(Vector3.zero, duration).SetEase(EaseValue).SetUpdate(true);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(duration + 0.2f);
 
         gameManage.Perder();
+        Time.timeScale = 1;
     }
 }

@@ -9,5 +9,4 @@ public class GameManage : MonoBehaviour
     {
         SceneManager.LoadScene("GameOver");
     }
-
 }

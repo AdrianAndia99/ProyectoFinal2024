@@ -10,4 +10,10 @@ public class SceneManage : MonoBehaviour
     {
         SceneManager.LoadScene(nameScene);
     }
+
+    public void Salir()
+    {
+        Application.Quit();
+        Debug.Log("ya sali p");
+    }
 }

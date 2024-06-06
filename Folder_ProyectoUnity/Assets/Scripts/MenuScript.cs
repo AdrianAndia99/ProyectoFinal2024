@@ -21,7 +21,7 @@ public class MenuScript : MonoBehaviour
     {
         for (int i = 0; i < menuInicio.Count; i++)
         {
-            menuInicio[i].DOScale(3.5f,0.25f);
+            menuInicio[i].DOScale(4f,0.25f);
             yield return new WaitForSeconds(0.25f);
             menuInicio[i].DOScale(3f, 0.25f);
         }

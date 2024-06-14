@@ -18,6 +18,11 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float velocidadRotacion;
     private Rigidbody rb;
 
+
+    [Header("Salto")]
+    [SerializeField] float jumpForce;
+    [SerializeField] bool isGrounded;
+
     [Header("Vida")]
     public int curHealth = 0;
     public int maxHealth = 50;
@@ -52,8 +57,6 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
-
-
     void FixedUpdate()
     {
         Vector3 direction = new Vector3(movimiento.x, 0, movimiento.y).normalized;
@@ -68,17 +71,37 @@ public class PlayerScript : MonoBehaviour
 
             Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
             rb.MovePosition(transform.position + moveDirection * velocidadMovimiento * Time.deltaTime);
+
         }
     }
     public void OnMove(InputAction.CallbackContext context)
     {
         movimiento = context.ReadValue<Vector2>();
     }
-
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        Jump();
+    }
     public void DamagePlayer(int damage)
     {
         curHealth -= damage;
         healthBar.SetHealth(curHealth);
+    }
+
+    void Jump()
+    {
+        Vector3 JUMPFORCE = Vector3.zero;
+        if (isGrounded)
+        {
+            JUMPFORCE = Vector3.up * jumpForce;
+        }
+
+        rb.AddForce(JUMPFORCE, ForceMode.VelocityChange);
+    }
+
+    public void SetGround(bool state)
+    {
+        isGrounded = state;
     }
     private IEnumerator ScalePlayerAndLoadGameOver()
     {

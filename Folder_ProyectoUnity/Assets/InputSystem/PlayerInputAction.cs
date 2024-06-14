@@ -35,6 +35,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""27a1661d-96ce-4a75-927b-9688d500cca1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -92,6 +101,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8bf241a-241e-4e7f-ae33-8c2ab43427a5"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +121,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         // movimiento
         m_movimiento = asset.FindActionMap("movimiento", throwIfNotFound: true);
         m_movimiento_move = m_movimiento.FindAction("move", throwIfNotFound: true);
+        m_movimiento_Jump = m_movimiento.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -163,11 +184,13 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_movimiento;
     private List<IMovimientoActions> m_MovimientoActionsCallbackInterfaces = new List<IMovimientoActions>();
     private readonly InputAction m_movimiento_move;
+    private readonly InputAction m_movimiento_Jump;
     public struct MovimientoActions
     {
         private @PlayerInputAction m_Wrapper;
         public MovimientoActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @move => m_Wrapper.m_movimiento_move;
+        public InputAction @Jump => m_Wrapper.m_movimiento_Jump;
         public InputActionMap Get() { return m_Wrapper.m_movimiento; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -180,6 +203,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @move.started += instance.OnMove;
             @move.performed += instance.OnMove;
             @move.canceled += instance.OnMove;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IMovimientoActions instance)
@@ -187,6 +213,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @move.started -= instance.OnMove;
             @move.performed -= instance.OnMove;
             @move.canceled -= instance.OnMove;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IMovimientoActions instance)
@@ -207,5 +236,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     public interface IMovimientoActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

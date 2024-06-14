@@ -53,6 +53,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+
     void FixedUpdate()
     {
         Vector3 direction = new Vector3(movimiento.x, 0, movimiento.y).normalized;

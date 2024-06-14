@@ -78,26 +78,12 @@ public class PlayerScript : MonoBehaviour
     {
         movimiento = context.ReadValue<Vector2>();
     }
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        Jump();
-    }
     public void DamagePlayer(int damage)
     {
         curHealth -= damage;
         healthBar.SetHealth(curHealth);
     }
 
-    void Jump()
-    {
-        Vector3 JUMPFORCE = Vector3.zero;
-        if (isGrounded)
-        {
-            JUMPFORCE = Vector3.up * jumpForce;
-        }
-
-        rb.AddForce(JUMPFORCE, ForceMode.VelocityChange);
-    }
 
     public void SetGround(bool state)
     {

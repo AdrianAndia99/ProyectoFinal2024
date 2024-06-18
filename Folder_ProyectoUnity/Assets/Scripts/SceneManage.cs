@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening;
 public class SceneManage : MonoBehaviour
 {
-
     public void LoadScene(string nameScene)
     {
         SceneManager.LoadScene(nameScene);
-
     }
 
     public void Salir()

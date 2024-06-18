@@ -7,6 +7,8 @@ using DG.Tweening;
 public class MenuScript : MonoBehaviour
 {
     public Transform[] menuInicio;
+    Tweener tweener;
+
     void Start()
     {
         for (int i = 0; i < menuInicio.Length; i++)
@@ -24,6 +26,9 @@ public class MenuScript : MonoBehaviour
             menuInicio[i].DOScale(4f, 0.25f);
             yield return new WaitForSeconds(0.25f);
             menuInicio[i].DOScale(3f, 0.25f);
+            Debug.Log("funciona");
+            tweener.Kill();
+            tweener.Restart();
         }
-    }
+    }  
 }

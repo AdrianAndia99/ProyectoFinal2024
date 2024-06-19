@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
+
 using DG.Tweening;
 
 public class PlayerScript : MonoBehaviour
@@ -20,8 +21,7 @@ public class PlayerScript : MonoBehaviour
 
 
     [Header("Salto")]
-    [SerializeField] float jumpForce;
-    [SerializeField] bool isGrounded;
+    [SerializeField] float jumpForce = 3f;
 
     [Header("Vida")]
     public int curHealth = 0;
@@ -57,6 +57,14 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
     void FixedUpdate()
     {
         Vector3 direction = new Vector3(movimiento.x, 0, movimiento.y).normalized;
@@ -84,11 +92,6 @@ public class PlayerScript : MonoBehaviour
         healthBar.SetHealth(curHealth);
     }
 
-
-    public void SetGround(bool state)
-    {
-        isGrounded = state;
-    }
     private IEnumerator ScalePlayerAndLoadGameOver()
     {
         transform.DOScale(Vector3.zero, duration).SetEase(EaseValue).SetUpdate(true);

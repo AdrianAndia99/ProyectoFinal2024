@@ -1936,7 +1936,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2069636, y: 0.00008551426, z: -0.000018090013, w: 0.9783487}
+  m_LocalRotation: {x: 0.2069636, y: 0.000085531094, z: -0.000018093573, w: 0.9783487}
   m_LocalPosition: {x: -34.180523, y: 1.8723658, z: -18.694456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2934,7 +2934,6 @@ MonoBehaviour:
   velocidadMovimiento: 3
   velocidadRotacion: 0
   jumpForce: 5
-  isGrounded: 0
   curHealth: 0
   maxHealth: 50
   healthBar: {fileID: 1291125854}
@@ -3393,7 +3392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638724735}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46159053, y: 0.00008662247, z: 0.000011810817, w: 0.8870932}
+  m_LocalRotation: {x: 0.46159053, y: 0.000086605425, z: 0.000011808489, w: 0.8870932}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4300,7 +4299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928617134}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.49350947, y: 0.0000869772, z: 0.000008654756, w: 0.8697405}
+  m_LocalRotation: {x: 0.49350947, y: 0.000086994325, z: 0.0000086564605, w: 0.8697405}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8888,7 +8887,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062861462}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.49350947, y: 0.0000869772, z: 0.000008654756, w: 0.8697405}
+  m_LocalRotation: {x: 0.49350947, y: 0.000086994325, z: 0.0000086564605, w: 0.8697405}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9018,7 +9017,7 @@ Transform:
   m_GameObject: {fileID: 2102906375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.5, y: 0, z: 14.8}
+  m_LocalPosition: {x: -10.8, y: 0, z: 14.2}
   m_LocalScale: {x: 11.673417, y: 4.2311077, z: 9.313814}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9156,8 +9155,7 @@ MonoBehaviour:
   movimiento: {x: 0, y: 0}
   velocidadMovimiento: 3
   velocidadRotacion: 0
-  jumpForce: 3
-  isGrounded: 0
+  jumpForce: 10
   curHealth: 0
   maxHealth: 50
   healthBar: {fileID: 1291125854}

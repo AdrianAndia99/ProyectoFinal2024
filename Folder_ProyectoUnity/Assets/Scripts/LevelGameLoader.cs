@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,26 +7,31 @@ public class LevelGameLoader : MonoBehaviour
 {
     public GameObject LoadScreen;
     public Slider slider;
-    public TextMeshProUGUI progressText;
-
-    public void LoadLevel(string sceneIndex)
+    public void LoadLevel(string scene)
     {
-        StartCoroutine(LoadAsynchronously(sceneIndex));
+        StartCoroutine(LoadAsynchronously(scene));
     }
 
     IEnumerator LoadAsynchronously(string sceneIndex)
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
-
+        slider.value = 0;
         LoadScreen.SetActive(true);
 
-        while (!operation.isDone)
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneIndex);
+        asyncOperation.allowSceneActivation = false;
+
+        float progress = 0;
+
+        while (!asyncOperation.isDone)
         {
-            float progress = Mathf.Clamp01(operation.progress / 0.9f);
-
+            progress = Mathf.MoveTowards(progress, asyncOperation.progress, Time.deltaTime);
             slider.value = progress;
-            progressText.text = progress * 100f + "%";
 
+            if(progress >= 0.9f)
+            {
+                slider.value = 1f;
+                asyncOperation.allowSceneActivation = true;
+            }
             yield return null;
         }
     }

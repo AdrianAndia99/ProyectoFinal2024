@@ -10,16 +10,6 @@ public class VidaScript : MonoBehaviour
 
     private void Start()
     {
-        /*if (playerHealth == null)
-        {
-            Debug.LogError("PlayerScript reference is not assigned!");
-            return;
-        }
-        if (healthBar == null)
-        {
-            Debug.LogError("HealthBar reference is not assigned!");
-            return;
-        }*/
 
         healthBar.maxValue = playerHealth.maxHealth;
         healthBar.value = playerHealth.maxHealth;

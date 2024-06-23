@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CollectCollision : MonoBehaviour
 {
-    public AudioSource audo;
+    public GameObject doorObject;
     private void OnTriggerEnter(Collider other)
     {
         PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
@@ -10,8 +10,10 @@ public class CollectCollision : MonoBehaviour
         if (playerInventory != null)
         {
             playerInventory.DiamondCollected();
+
+            doorObject.SetActive(false);
             gameObject.SetActive(false);
-            audo.Play();
+
         }
     }
 }

@@ -8,7 +8,6 @@ public class MenuScript : MonoBehaviour
 {
     public Transform[] menuInicio;
 
-
     void Start()
     {
         Time.timeScale = 1;

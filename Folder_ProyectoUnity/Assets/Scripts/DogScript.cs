@@ -8,19 +8,26 @@ public class DogScript : MonoBehaviour
     private NavMeshAgent agent;
     private bool forward = true;
 
+    public float detectionRadius = 5f; // Radio de detección
+    private Transform player; // Referencia al jugador
+    private bool playerDetected = false;
+
     void Start()
     {
-        SphereCollider detectionArea = gameObject.AddComponent<SphereCollider>();
-
         agent = GetComponent<NavMeshAgent>();
-
         agent.autoBraking = false;
+
+        // Añadir y configurar el SphereCollider
+        SphereCollider detectionArea = gameObject.AddComponent<SphereCollider>();
+        detectionArea.radius = detectionRadius;
+        detectionArea.isTrigger = true;
 
         GotoNextPoint();
     }
+
     void GotoNextPoint()
     {
-        if (points.Length == 0)
+        if (points.Length == 0 || playerDetected)
         {
             return;
         }
@@ -46,10 +53,36 @@ public class DogScript : MonoBehaviour
             }
         }
     }
+
     void Update()
     {
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
+        if (!playerDetected)
         {
+            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            {
+                GotoNextPoint();
+            }
+        }
+        else if (player != null)
+        {
+            agent.destination = player.position;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            player = other.transform;
+            playerDetected = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerDetected = false;
             GotoNextPoint();
         }
     }

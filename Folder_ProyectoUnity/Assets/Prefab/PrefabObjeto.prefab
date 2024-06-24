@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6383938776150324561}
   - component: {fileID: 7864809065044108175}
   m_Layer: 0
-  m_Name: PrefabNodos
+  m_Name: PrefabObjeto
   m_TagString: Nodo
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Vida")]
     public int curHealth = 0;
-    public int maxHealth = 50;
+    public int maxHealth = 7;
     public VidaScript healthBar;
 
     [Header("DoTween")]
@@ -46,12 +46,19 @@ public class PlayerScript : MonoBehaviour
     {
         curHealth = maxHealth;
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Dog")
         {
-            DamagePlayer(10);
+            DamagePlayer(1);
             if (curHealth == 0)
             {
                 Time.timeScale = 0;
@@ -88,7 +95,7 @@ public class PlayerScript : MonoBehaviour
                 audioSource.Play();
             }
         }
-        else if (other.gameObject.tag == "Objeto2")
+        else if (other.gameObject.tag == "Objeto4")
         {
             AudioClip clip = audioArreglo.GetAudioClip(3);
             if (clip != null)
@@ -97,15 +104,8 @@ public class PlayerScript : MonoBehaviour
                 audioSource.Play();
             }
         }
+    }
 
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-    }
     void FixedUpdate()
     {
         Vector3 direction = new Vector3(movimiento.x, 0, movimiento.y).normalized;

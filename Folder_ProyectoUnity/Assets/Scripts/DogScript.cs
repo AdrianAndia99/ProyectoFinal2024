@@ -8,8 +8,8 @@ public class DogScript : MonoBehaviour
     private NavMeshAgent agent;
     private bool forward = true;
 
-    public float detectionRadius = 5f; // Radio de detección
-    private Transform player; // Referencia al jugador
+    public float detectionRadius = 5f;
+    private Transform player;
     private bool playerDetected = false;
 
     void Start()

@@ -8,19 +8,19 @@ public class DogScript : MonoBehaviour
     private NavMeshAgent agent;
     private bool forward = true;
 
-    public float detectionRadius = 5f;
+    public float detectionRadius = 3.5f;
     private Transform player;
     private bool playerDetected = false;
+
+    private SphereCollider detectionArea;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
 
-        // Añadir y configurar el SphereCollider
-        SphereCollider detectionArea = gameObject.AddComponent<SphereCollider>();
+        detectionArea = gameObject.GetComponent<SphereCollider>();
         detectionArea.radius = detectionRadius;
-        detectionArea.isTrigger = true;
 
         GotoNextPoint();
     }

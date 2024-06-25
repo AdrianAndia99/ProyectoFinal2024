@@ -15,7 +15,7 @@ public class VidaScript : MonoBehaviour
         healthBar.value = playerHealth.maxHealth;
     }
 
-    public void SetHealth(int hp)
+    public void SetHealth(float hp)
     {
         healthBar.value = hp;
     }

@@ -24,8 +24,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float jumpForce = 3f;
 
     [Header("Vida")]
-    public int curHealth = 0;
-    public int maxHealth = 7;
+    public float curHealth = 0f;
+    public float maxHealth = 7f;
     public VidaScript healthBar;
 
     [Header("DoTween")]
@@ -127,7 +127,7 @@ public class PlayerScript : MonoBehaviour
     {
         movimiento = context.ReadValue<Vector2>();
     }
-    public void DamagePlayer(int damage)
+    public void DamagePlayer(float damage)
     {
         curHealth -= damage;
         healthBar.SetHealth(curHealth);

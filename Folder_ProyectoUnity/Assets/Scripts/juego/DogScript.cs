@@ -9,7 +9,7 @@ public class DogScript : MonoBehaviour
     private bool forward = true;
 
     public float detectionRadius = 3.5f;
-    private Transform player;
+    public Transform player;
     private bool playerDetected = false;
 
     private SphereCollider detectionArea;
@@ -27,10 +27,6 @@ public class DogScript : MonoBehaviour
 
     void GotoNextPoint()
     {
-        if (points.Length == 0 || playerDetected)
-        {
-            return;
-        }
 
         agent.destination = points[destPoint].position;
 
@@ -53,7 +49,6 @@ public class DogScript : MonoBehaviour
             }
         }
     }
-
     void Update()
     {
         if (!playerDetected)
@@ -77,7 +72,6 @@ public class DogScript : MonoBehaviour
             playerDetected = true;
         }
     }
-
     void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))

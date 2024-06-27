@@ -3,13 +3,13 @@ using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
-    private TextMeshProUGUI diamondText;
+    private TextMeshProUGUI objectText;
     void Start()
     {
-        diamondText = GetComponent<TextMeshProUGUI>();
+        objectText = GetComponent<TextMeshProUGUI>();
     }
     public void UpdateDiamondText(PlayerInventory playerInventory)
     {
-        diamondText.text = playerInventory.NumberOfDiamonds.ToString();
+        objectText.text = playerInventory.NumberOfDiamonds.ToString();
     }
 }

@@ -22,6 +22,8 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Salto")]
     [SerializeField] float jumpForce = 3f;
+    private int jumpCount = 0;
+    private int maxJumpCount = 2;
 
     [Header("Vida")]
     public float curHealth = 0f;
@@ -48,9 +50,10 @@ public class PlayerScript : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumpCount)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpCount++;
         }
     }
 
@@ -64,6 +67,10 @@ public class PlayerScript : MonoBehaviour
                 Time.timeScale = 0;
                 StartCoroutine(ScalePlayerAndLoadGameOver());
             }
+        }
+        if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == "colliders")
+        {
+            jumpCount = 0;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -103,6 +110,10 @@ public class PlayerScript : MonoBehaviour
                 audioSource.clip = clip;
                 audioSource.Play();
             }
+        }
+        else if (other.gameObject.tag == "Juguete")
+        {
+            SceneManager.LoadScene("Win");
         }
     }
 

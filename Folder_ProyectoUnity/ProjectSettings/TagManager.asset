@@ -11,6 +11,8 @@ TagManager:
   - Objeto2
   - Objeto3
   - Objeto4
+  - Juguete
+  - colliders
   layers:
   - Default
   - TransparentFX

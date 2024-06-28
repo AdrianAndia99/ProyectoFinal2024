@@ -3,16 +3,16 @@ using UnityEngine.AI;
 
 public class DogScript : MonoBehaviour
 {
-    public Transform[] points;
-    private int destPoint = 0;
     private NavMeshAgent agent;
-    private bool forward = true;
 
     public float detectionRadius = 3.5f;
     public Transform player;
     private bool playerDetected = false;
 
     private SphereCollider detectionArea;
+
+    //target
+    [SerializeField]Vector3 TarjectPosition;
 
     void Start()
     {
@@ -28,9 +28,9 @@ public class DogScript : MonoBehaviour
     void GotoNextPoint()
     {
 
-        agent.destination = points[destPoint].position;
-
-        if (forward)
+        //agent.destination = points[destPoint].position;
+        agent.destination = TarjectPosition;
+        /*if (forward)
         {
             destPoint++;
             if (destPoint >= points.Length)
@@ -47,7 +47,7 @@ public class DogScript : MonoBehaviour
                 destPoint = 0;
                 forward = true;
             }
-        }
+        }*/
     }
     void Update()
     {
@@ -66,7 +66,7 @@ public class DogScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag == ("Player"))
         {
             player = other.transform;
             playerDetected = true;
@@ -74,10 +74,15 @@ public class DogScript : MonoBehaviour
     }
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.tag == ("Player"))
         {
             playerDetected = false;
             GotoNextPoint();
         }
+    }
+
+    public void ChangeMovePosition(Vector3 destination)
+    {
+        TarjectPosition = destination;
     }
 }

@@ -37,7 +37,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameManage gameManage;
 
     public AudioArreglo audioArreglo;
-    public AudioSource audioSource;
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -77,37 +76,33 @@ public class PlayerScript : MonoBehaviour
     {
         if(other.gameObject.tag == "Objeto1")
         {
-            AudioClip clip = audioArreglo.GetAudioClip(0);
-            if (clip != null)
+            AudioSource audioSource = audioArreglo.GetAudioSource(0);
+            if (audioSource != null)
             {
-                audioSource.clip = clip;
                 audioSource.Play();
             }
         }
         else if(other.gameObject.tag == "Objeto2")
         {
-            AudioClip clip = audioArreglo.GetAudioClip(1);
-            if (clip != null)
+            AudioSource audioSource = audioArreglo.GetAudioSource(1);
+            if (audioSource != null)
             {
-                audioSource.clip = clip;
                 audioSource.Play();
             }
         }
         else if (other.gameObject.tag == "Objeto3")
         {
-            AudioClip clip = audioArreglo.GetAudioClip(2);
-            if (clip != null)
+            AudioSource audioSource = audioArreglo.GetAudioSource(2);
+            if (audioSource != null)
             {
-                audioSource.clip = clip;
                 audioSource.Play();
             }
         }
         else if (other.gameObject.tag == "Objeto4")
         {
-            AudioClip clip = audioArreglo.GetAudioClip(3);
-            if (clip != null)
+            AudioSource audioSource = audioArreglo.GetAudioSource(3);
+            if (audioSource != null)
             {
-                audioSource.clip = clip;
                 audioSource.Play();
             }
         }

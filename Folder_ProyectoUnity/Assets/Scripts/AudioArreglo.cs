@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class AudioArreglo : MonoBehaviour
 {
-    public AudioClip[] audioClips;
+    public AudioSource[] audioSources;
 
-    public AudioClip GetAudioClip(int index)
+    public AudioSource GetAudioSource(int index)
     {
-        if (index >= 0 && index <= audioClips.Length)
+        if (index >= 0 && index < audioSources.Length)
         {
-            return audioClips[index];
+            return audioSources[index];
         }
         return null;
     }

@@ -5,22 +5,18 @@ public class DogScript : MonoBehaviour
 {
     private NavMeshAgent agent;
 
-    public float detectionRadius = 3.5f;
     public Transform player;
     private bool playerDetected = false;
 
-    private SphereCollider detectionArea;
 
-    //target
     [SerializeField]Vector3 TarjectPosition;
+    public AudioSource audioCollision;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
 
-        detectionArea = gameObject.GetComponent<SphereCollider>();
-        detectionArea.radius = detectionRadius;
 
         GotoNextPoint();
     }
@@ -70,6 +66,8 @@ public class DogScript : MonoBehaviour
         {
             player = other.transform;
             playerDetected = true;
+            audioCollision.Play();
+
         }
     }
     void OnTriggerExit(Collider other)

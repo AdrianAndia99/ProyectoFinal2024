@@ -12,29 +12,9 @@ public class SingleTry : MonoBehaviour
     [SerializeField] private Slider sliderSFX;
     [SerializeField] private AudioSetting audioSettings;
 
-    public static SingleTry instance;
-
-    public static SingleTry Instance
-    {
-        get 
-        { 
-            return instance; 
-        }
-    }
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-
-            LoadVolumeSettings();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void Start()

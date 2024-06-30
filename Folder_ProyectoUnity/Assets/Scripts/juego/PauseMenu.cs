@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] float topPosY, middlePosY;
     [SerializeField] float TweenDuration;
     [SerializeField] CanvasGroup blackPanelTransition;
+    public GameObject optionPanel;
 
     public void Pause()
     {
@@ -37,5 +38,12 @@ public class PauseMenu : MonoBehaviour
             PausePanel.SetActive(false);
             Time.timeScale = 1;
         });
+    }
+    public void showOptions()
+    {
+        Debug.Log("ShowOptions called");
+        PausePanel.SetActive(false);
+        optionPanel.SetActive(true);
+        SingleTry.Instance.LoadVolumeSettings();
     }
 }

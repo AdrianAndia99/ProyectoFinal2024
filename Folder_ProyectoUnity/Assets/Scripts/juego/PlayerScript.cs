@@ -37,6 +37,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameManage gameManage;
 
     public AudioArreglo audioArreglo;
+    public PauseMenu pauseMenu;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -111,7 +113,6 @@ public class PlayerScript : MonoBehaviour
             SceneManager.LoadScene("Win");
         }
     }
-
     void FixedUpdate()
     {
         Vector3 direction = new Vector3(movimiento.x, 0, movimiento.y).normalized;
@@ -142,10 +143,16 @@ public class PlayerScript : MonoBehaviour
               rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
               jumpCount++;
             }
-
         }
-
     }
+    public void OnPress(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            pauseMenu.Pause();
+        }
+    }
+
     public void DamagePlayer(float damage)
     {
         curHealth -= damage;

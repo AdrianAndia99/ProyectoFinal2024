@@ -37,6 +37,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private GameManage gameManage;
 
     public AudioArreglo audioArreglo;
+    public PauseMenu pauseMenu;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -47,14 +49,14 @@ public class PlayerScript : MonoBehaviour
     {
         curHealth = maxHealth;
     }
-    private void Update()
+   /* private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumpCount)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpCount++;
         }
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -111,7 +113,6 @@ public class PlayerScript : MonoBehaviour
             SceneManager.LoadScene("Win");
         }
     }
-
     void FixedUpdate()
     {
         Vector3 direction = new Vector3(movimiento.x, 0, movimiento.y).normalized;
@@ -133,6 +134,25 @@ public class PlayerScript : MonoBehaviour
     {
         movimiento = context.ReadValue<Vector2>();
     }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if(jumpCount < maxJumpCount)
+            {
+              rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+              jumpCount++;
+            }
+        }
+    }
+    public void OnPress(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            pauseMenu.Pause();
+        }
+    }
+
     public void DamagePlayer(float damage)
     {
         curHealth -= damage;

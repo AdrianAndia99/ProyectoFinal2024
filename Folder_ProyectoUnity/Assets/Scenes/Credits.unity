@@ -723,7 +723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AdrianAndia999
+  m_text: "Adrian And\xEDa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1073fe69fcaf0274ca351ef4781beda8, type: 2}
   m_sharedMaterial: {fileID: 9137124130546260222, guid: 1073fe69fcaf0274ca351ef4781beda8,

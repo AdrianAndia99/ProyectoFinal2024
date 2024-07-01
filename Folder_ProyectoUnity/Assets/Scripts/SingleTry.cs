@@ -12,11 +12,6 @@ public class SingleTry : MonoBehaviour
     [SerializeField] private Slider sliderSFX;
     [SerializeField] private AudioSetting audioSettings;
 
-
-    private void Awake()
-    {
-    }
-
     private void Start()
     {
         LoadVolumeSettings();

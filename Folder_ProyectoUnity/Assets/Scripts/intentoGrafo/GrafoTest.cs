@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GrafoTest : MonoBehaviour
@@ -80,6 +79,5 @@ public class GrafoTest : MonoBehaviour
         AddNode(-42.5f,20f,8);
         AddNode(-48f,0.5f,9);
         AddNode(26f, 28f, 10);
-
     }
 }

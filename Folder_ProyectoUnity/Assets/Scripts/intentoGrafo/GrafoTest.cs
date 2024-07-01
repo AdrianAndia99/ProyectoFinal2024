@@ -7,7 +7,7 @@ public class GrafoTest : MonoBehaviour
     public SimplyLinkedList<ControlNode> allNode;
     public GameObject nodePrefab;
     GameObject currentNode;
-    public ControlNode currentNodeControl;
+    ControlNode currentNodeControl;
     public DogScript Enemy;
     void Awake()
     {
@@ -53,17 +53,17 @@ public class GrafoTest : MonoBehaviour
     }
     public void GeneratePath()
     {
-        AddNodeAdjacent(0, new int[] { 1 });
-        AddNodeAdjacent(1, new int[] { 2, 3 });
-        AddNodeAdjacent(2, new int[] { 3,5 });
-        AddNodeAdjacent(3, new int[] { 4,2 });
-        AddNodeAdjacent(4, new int[] { 3,2 });
-        AddNodeAdjacent(5, new int[] {2,6 });
-        AddNodeAdjacent(6, new int[] {7,5});
-        AddNodeAdjacent(7, new int[] { 8,6});
-        AddNodeAdjacent(8, new int[] {6,9 });
+        AddNodeAdjacent(0, new int[] { 1, 2});
+        AddNodeAdjacent(1, new int[] { 2, 3});
+        AddNodeAdjacent(2, new int[] { 3, 5});
+        AddNodeAdjacent(3, new int[] { 4, 2});
+        AddNodeAdjacent(4, new int[] { 3, 2});
+        AddNodeAdjacent(5, new int[] { 2, 6});
+        AddNodeAdjacent(6, new int[] { 7, 5});
+        AddNodeAdjacent(7, new int[] { 8, 6});
+        AddNodeAdjacent(8, new int[] { 6, 9});
         AddNodeAdjacent(9, new int[] { 8});
-        AddNodeAdjacent(10,new int[]{ 1, 2});
+        AddNodeAdjacent(10,new int[] { 2});
 
     }
     void GenerateNode()

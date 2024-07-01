@@ -15,7 +15,7 @@ public class ControlNode : MonoBehaviour
     {
         this.positionx = positionx;
         this.positiony = positiony;
-        transform.position = new Vector3(positionx, 0, positiony);
+        transform.position = new Vector3(positionx, 0.2f, positiony);
         this.nodeTag = nodeTag;
 
     }

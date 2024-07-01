@@ -47,14 +47,14 @@ public class PlayerScript : MonoBehaviour
     {
         curHealth = maxHealth;
     }
-    private void Update()
+   /* private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumpCount)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpCount++;
         }
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -132,6 +132,19 @@ public class PlayerScript : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         movimiento = context.ReadValue<Vector2>();
+    }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if(jumpCount < maxJumpCount)
+            {
+              rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+              jumpCount++;
+            }
+
+        }
+
     }
     public void DamagePlayer(float damage)
     {

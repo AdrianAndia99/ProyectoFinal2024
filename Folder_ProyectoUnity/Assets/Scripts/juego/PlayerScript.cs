@@ -145,6 +145,18 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            velocidadMovimiento = velocidadMovimiento * 2f;
+        }
+        if (context.canceled)
+        {
+            velocidadMovimiento = 3f;
+        }
+    }
+
     public void OnPress(InputAction.CallbackContext context)
     {
         if (context.performed)

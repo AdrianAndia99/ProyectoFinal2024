@@ -44,24 +44,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Run"",
-                    ""type"": ""Button"",
-                    ""id"": ""8bc60742-53e9-4009-8f77-c40459446317"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""eea72747-8da4-444e-9fef-a173136b45af"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -130,28 +112,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bc1e8a2d-8a77-435d-b811-928330ef9fe5"",
-                    ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""293af0ce-118a-4ebc-bb44-c31282b5e40e"",
-                    ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -162,8 +122,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_movimiento = asset.FindActionMap("movimiento", throwIfNotFound: true);
         m_movimiento_move = m_movimiento.FindAction("move", throwIfNotFound: true);
         m_movimiento_Jump = m_movimiento.FindAction("Jump", throwIfNotFound: true);
-        m_movimiento_Run = m_movimiento.FindAction("Run", throwIfNotFound: true);
-        m_movimiento_Pause = m_movimiento.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,16 +185,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private List<IMovimientoActions> m_MovimientoActionsCallbackInterfaces = new List<IMovimientoActions>();
     private readonly InputAction m_movimiento_move;
     private readonly InputAction m_movimiento_Jump;
-    private readonly InputAction m_movimiento_Run;
-    private readonly InputAction m_movimiento_Pause;
     public struct MovimientoActions
     {
         private @PlayerInputAction m_Wrapper;
         public MovimientoActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @move => m_Wrapper.m_movimiento_move;
         public InputAction @Jump => m_Wrapper.m_movimiento_Jump;
-        public InputAction @Run => m_Wrapper.m_movimiento_Run;
-        public InputAction @Pause => m_Wrapper.m_movimiento_Pause;
         public InputActionMap Get() { return m_Wrapper.m_movimiento; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -252,12 +206,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Run.started += instance.OnRun;
-            @Run.performed += instance.OnRun;
-            @Run.canceled += instance.OnRun;
-            @Pause.started += instance.OnPause;
-            @Pause.performed += instance.OnPause;
-            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IMovimientoActions instance)
@@ -268,12 +216,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Run.started -= instance.OnRun;
-            @Run.performed -= instance.OnRun;
-            @Run.canceled -= instance.OnRun;
-            @Pause.started -= instance.OnPause;
-            @Pause.performed -= instance.OnPause;
-            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IMovimientoActions instance)
@@ -295,7 +237,5 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnRun(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
     }
 }

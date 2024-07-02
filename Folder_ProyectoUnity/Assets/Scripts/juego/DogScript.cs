@@ -12,11 +12,8 @@ public class DogScript : MonoBehaviour
     [SerializeField]Vector3 TarjectPosition;
     public AudioSource audioCollision;
 
-    [SerializeField] Animator enemyDog;
-
     void Start()
     {
-        enemyDog = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         agent.autoBraking = false;
 
@@ -69,8 +66,8 @@ public class DogScript : MonoBehaviour
         {
             player = other.transform;
             playerDetected = true;
-            enemyDog.SetBool("PlayerRange", true);
             audioCollision.Play();
+
         }
     }
     void OnTriggerExit(Collider other)
@@ -78,7 +75,6 @@ public class DogScript : MonoBehaviour
         if (other.gameObject.tag == ("Player"))
         {
             playerDetected = false;
-            enemyDog.SetBool("PlayerRange", false);
             GotoNextPoint();
         }
     }

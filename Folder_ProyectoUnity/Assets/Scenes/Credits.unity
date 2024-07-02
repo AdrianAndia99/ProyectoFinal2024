@@ -585,7 +585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'See you at 3C26 - Part 2:
+  m_text: 'Los veo en el 3C26 - Parte 2:
 
 
     The redemption path'
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: AdrianAndia999
+  m_text: "Adrian And\xEDa"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1073fe69fcaf0274ca351ef4781beda8, type: 2}
   m_sharedMaterial: {fileID: 9137124130546260222, guid: 1073fe69fcaf0274ca351ef4781beda8,
@@ -1531,11 +1531,11 @@ RectTransform:
   - {fileID: 1521981817}
   m_Father: {fileID: 1229456876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -622.5001}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -1112.5}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &982481915
 Animator:
   serializedVersion: 5

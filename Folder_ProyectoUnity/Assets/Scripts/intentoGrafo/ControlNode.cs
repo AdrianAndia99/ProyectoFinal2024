@@ -5,18 +5,18 @@ public class ControlNode : MonoBehaviour
 {
     SimplyLinkedList<ControlNode> allAdjacentesNodes;
     private float positionx, positiony;
-    public int nodeTag;
+    public int nodeValue;
     void Awake()
     {
         allAdjacentesNodes = new SimplyLinkedList<ControlNode>();
     }
 
-    public void SetInitialValues(float positionx, float positiony, int nodeTag)
+    public void SetInitialValues(float positionx, float positiony, int nodeValue)
     {
         this.positionx = positionx;
         this.positiony = positiony;
         transform.position = new Vector3(positionx, 0.2f, positiony);
-        this.nodeTag = nodeTag;
+        this.nodeValue = nodeValue;
 
     }
     public void AddNodeAdjacent(ControlNode nodo)

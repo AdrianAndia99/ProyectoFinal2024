@@ -12,7 +12,7 @@ public class DogScript : MonoBehaviour
     [SerializeField]Vector3 TarjectPosition;
     public AudioSource audioCollision;
 
-    [SerializeField] Animator enemyDog;
+    private Animator enemyDog;
 
     void Start()
     {

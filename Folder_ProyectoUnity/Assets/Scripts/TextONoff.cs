@@ -4,7 +4,7 @@ using TMPro;
 
 public class TextONoff : MonoBehaviour
 {
-    public TMP_Text textToBlink; 
+    public TextMeshProUGUI textToBlink; 
     public float blinkInterval = 0.5f;
 
     private void Start()

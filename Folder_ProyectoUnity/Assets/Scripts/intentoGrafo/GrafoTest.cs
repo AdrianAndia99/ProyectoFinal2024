@@ -38,12 +38,12 @@ public class GrafoTest : MonoBehaviour
             selectedNode.AddNodeAdjacent(SearchNode(allAdjacentTags[i]));
         }
     }
-    ControlNode SearchNode(int nodeTag)
+    ControlNode SearchNode(int nodeValue)
     {
         int position = 0;
         for (int i = 0; i < allNode.length; i++)
         {
-            if (allNode.ObtainNodeAtPosition(i).nodeTag == nodeTag)
+            if (allNode.ObtainNodeAtPosition(i).nodeValue == nodeValue)
             {
                 position = i;
                 break;

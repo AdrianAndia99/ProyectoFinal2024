@@ -5,12 +5,12 @@ public class PlayerInventory : MonoBehaviour
 {
     public int NumberOfObjects { get; private set; }
 
-    public UnityEvent<PlayerInventory> OnDiamondCollected;
+    public UnityEvent<PlayerInventory> OnItemCollected;
 
     public void DiamondCollected()
     {
         NumberOfObjects++;
-        OnDiamondCollected.Invoke(this);
+        OnItemCollected.Invoke(this);
 
     }
 }

@@ -8,8 +8,8 @@ public class InventoryUI : MonoBehaviour
     {
         objectText = GetComponent<TextMeshProUGUI>();
     }
-    public void UpdateDiamondText(PlayerInventory playerInventory)
+    public void UpdateItemText(PlayerInventory playerInventory)
     {
-        objectText.text = playerInventory.NumberOfDiamonds.ToString();
+        objectText.text = playerInventory.NumberOfObjects.ToString();
     }
 }

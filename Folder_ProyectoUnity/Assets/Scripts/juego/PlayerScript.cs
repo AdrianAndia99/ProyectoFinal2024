@@ -180,4 +180,4 @@ public class PlayerScript : MonoBehaviour
         gameManage.Perder();
         Time.timeScale = 1;
     }
-}
+}// tiempo asintotico 0(1)

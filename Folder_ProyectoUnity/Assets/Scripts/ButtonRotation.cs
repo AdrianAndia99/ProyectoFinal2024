@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,4 +46,4 @@ public class ButtonsRotation : MonoBehaviour
             buttons[i].transform.localRotation = Quaternion.Euler(0f, 0f, currentAngles[i]);
         }
     }
-}
+}// tiempo asintotico 0(n)

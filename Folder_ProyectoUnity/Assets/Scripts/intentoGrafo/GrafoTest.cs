@@ -38,6 +38,7 @@ public class GrafoTest : MonoBehaviour
             selectedNode.AddNodeAdjacent(SearchNode(allAdjacentTags[i]));
         }
     }
+
     ControlNode SearchNode(int nodeValue)
     {
         int position = 0;
@@ -51,6 +52,7 @@ public class GrafoTest : MonoBehaviour
         }
         return allNode.ObtainNodeAtPosition(position);
     }
+    // tiempo asintotico 0(n)
     public void GeneratePath()
     {
         AddNodeAdjacent(0, new int[] { 1, 2});

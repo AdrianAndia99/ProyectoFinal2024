@@ -87,4 +87,4 @@ public class DogScript : MonoBehaviour
     {
         TarjectPosition = destination;
     }
-}
+}//tiempo asintótico 0(1)

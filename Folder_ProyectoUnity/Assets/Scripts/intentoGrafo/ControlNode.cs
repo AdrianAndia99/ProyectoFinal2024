@@ -22,7 +22,7 @@ public class ControlNode : MonoBehaviour
     public void AddNodeAdjacent(ControlNode nodo)
     {
         allAdjacentesNodes.InsertNodeAtStart(nodo);
-    }
+    }// aca p esto puede ser 0(1) - 0(N)
 
     public ControlNode SelectNextNode()
     {
